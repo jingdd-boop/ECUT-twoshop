@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/garden/garden",
     "pages/publish/publish",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/index/detail",
+    "pages/index/enter"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -21,12 +22,6 @@
         "selectedIconPath": "images/tabbar/shouye_1.png",
         "pagePath": "pages/index/index",
         "text": "首页"
-      },
-      {
-        "iconPath": "images/tabbar/shequ.png",
-        "selectedIconPath": "images/tabbar/shequ_1.png",
-        "pagePath": "pages/garden/garden",
-        "text": "园区"
       },
       {
         "iconPath": "images/tabbar/tianjia.png",

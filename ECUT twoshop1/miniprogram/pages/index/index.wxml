@@ -1,83 +1,46 @@
-<!-- 1、搜索框 -->
-<view class="search">
-  <input placeholder="校园二手交易平台">
-</input>
-<image src="../../images/search.svg"></image> 
+<!-- 组件化swiper -->
+<view class="swiper-container">
+    <index-swiper imgUrls="{{imgUrls}}"></index-swiper>
+  </view>
+
+
+<!-- 组件化search -->
+<my-search></my-search>
+
+
+<!-- 列表分类展示 -->
+<view class="type-container">
+    <view class="type-item" wx:for="{{typeCat}}" wx:key="{{index}}">
+      <view data-id="{{item.id}}" class="type-name {{activeTypeId === item.id ? 'type-item-on' : ''}}"
+      bindtap="typeSwitch" 
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    
 </view>
-
-
-<!-- 2、轮播图 -->
-<view class="swiper">
-  <swiper autoplay="true">
-	<swiper-item>
-		<image class="swiper-img" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3051583417,1778342798&fm=26&gp=0.jpg" />
-	</swiper-item>
-	<swiper-item>
-		<image class="swiper-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1694539572,3911442581&fm=26&gp=0.jpg" />
-	</swiper-item>
-	<swiper-item>
-		<image class="swiper-img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3270193591,1485579013&fm=26&gp=0.jpg" />
-	</swiper-item>
-</swiper>
-
-</view>
+<!-- 商品显示 -->
+      <view wx:for="{{shopList}}" class="shopList">
+      <view class="shop-img">
+        <image src="{{item.pic[0]}}"></image>
+      </view>
+      <view>
+        <view>{{item.title}}</view>
+      <!-- <view>{{item.type}}</view> -->
+      <view>{{item.addr}}</view>
+      <!-- <view>{{item.collection}}</view> -->
+        <view>{{item.date}}</view>
+        <navigator url="/pages/index/detail?_id={{item._id}}">
+          <view>查看详情</view>
+        </navigator>
+      </view>
+      
+     
+      <!-- <view>{{item.tell}}</view> -->
+     
+     
  
-
-<!-- 3、功能选择 -->
-
-<view class="item">
-  <view class="item-list">
-    <image class="item-img" src="../../images/huishou.svg"></image>
-    <p>上门回收</p>
-  </view>
-  <view class="item-list">
-    <image class="item-img" src="../../images/huishou.svg"></image>
-    <p>上门回收</p>
-  </view>
-  
-  <!-- <view class="item-list">
-    <image class="item-img" src="../../images/xianzhi.svg"></image>
-    <p>闲置出售</p>
-  </view> -->
-  <view class="item-list">
-    <image class="item-img" src="../../images/shuoming.svg"></image>
-    <p>购买须知</p>
-  </view>
-  <view class="item-list">
-    <image class="item-img" src="../../images/shuoming.svg"></image>
-    <p>购买须知</p>
-  </view>
-
+     
 
 </view>
-<!-- 4、导航框图 -->
-<view class="nav">
-  <view class="nav-left"><image class="nav-img" src="../../images/1.png"></image></view>
-  <view class="nav-right">
-    <image class="nav-img" src="../../images/2.png"></image>
-    <image class="nav-img" src="../../images/3.png"></image>
-  </view>
- 
-</view>
-<!-- 5、商品导航 -->
-
-<van-tabs active="{{ active }}" bind:change="onChange">
-  <van-tab title="今日上新">
-    <van-card
-    num="2"
-    tag="闲置"
-    price="10.00"
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ imageURL }}"
->
-  <!-- <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </view> -->
-</van-card>
-  </van-tab>
-  <van-tab title="书籍">内容 2</van-tab>
-  <van-tab title="服饰">内容 3</van-tab>
-  <van-tab title="文具">内容 4</van-tab>
-</van-tabs>

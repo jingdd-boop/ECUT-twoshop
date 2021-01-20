@@ -1,29 +1,43 @@
-// miniprogram/pages/mine/mine.js
+// miniprogram/pages/enter/enter.js
+const DB = wx.cloud.database().collection('shop-users')
+let userName = ''
+let userUrl = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userList:[]
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    users:[]
   },
-
+  
+  bindGetUserInfo: function (e) {
+    wx.switchTab({
+      url: '../index/index',  //注意switchTab只能跳转到tab页面，不能跳转到不带tab的页面
+    })
+    this.setData({
+     users:e.detail.userInfo
+    })
+    
+      DB.add({
+        data: {
+          userName:e.detail.userInfo.nickName,
+          userUrl:e.detail.userInfo.avatarUrl,
+        },
+        success(res){
+          console.log("成功",res)
+        },
+        fail(res){
+          console.log("失败",res)
+        }
+      })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    wx.cloud.database().collection("shop-users").get({
-      success(res) {
-        console.log("请求成功",res)
-        that.setData({
-          userList:res.data
-        })
-      },
-      fail(res) {
-        console.log("请求失败",res)
-      }
-    })
+    
   },
 
   /**

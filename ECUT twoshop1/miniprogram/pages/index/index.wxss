@@ -1,91 +1,46 @@
-page {
-  background-color: #ffffff;
-}
-.search {
+.type-container {
   display: flex;
-  flex-direction: row;
-  padding-left: 56rpx;
+  padding: 5rpx 20rpx 0 20rpx;
+  /* position: relative;
+  top:-93rpx; */
+  /* background: rgb(0,0,0,0.137); */
+  margin-top: 15rpx;
+  justify-content: flex-start;
+}
+.type-container .type-item {
+  flex: 1;
+  height: 60rpx;
+}
+.type-container .type-item view {
+  font-size: 25rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 10rpx 10rpx 0 0;
+  margin: 0 3rpx;
+  background-color: rgb(252, 247, 248);
+  color: raga(255,255,255);
+}
+.type-container .type-item .type-item-on {
+  background-color: rgb(182, 231, 240);
+  box-shadow: 3rpx greg;
 }
 
-.search input {
-  height: 50rpx;
-  width: 90%;
-  border: 1px solid rgb(189, 187, 187);
-  border-radius: 40rpx;
-  position: relative;
-  padding-left: 20rpx;
-}
-.search image {
-  right:90rpx;
-  top:5rpx;
-  position: absolute;
-  height: 50rpx;
-  width: 50rpx;
-}
-
-.swiper {
-  margin-top: 50rpx;
-  margin-left: 70rpx;
+.shopList{
   
-}
-swiper{
-  width: 100%;
-  height: 400rpx;
-  
-}
-.swiper-img{
   height: 300rpx;
-  border-radius: 20rpx 20rpx;
-  width: 90%;
-  box-shadow:  5px 5px 12px #bebebe,
-             -5px -5px 12px #ffffff;
-}
-
-.item {
+  width: 750rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  overflow: hidden;
-  padding-left: 10px;
-  
-  
+ 
 }
 
-.item-list {
-  display: flex;
-  flex-direction: column; 
-}
-.item-img {
-  position: relative;
-  height: 100rpx;
-  width: 100rpx;
-  color: aquamarine;
-}
-
-.nav {
-  width: 90%;
-  height: 500rpx;
-  display: flex;
-  flex-direction: row;
-  padding-left: 50rpx;
-  padding-top: 50rpx;
-}
-
-.nav-left {
-  padding-right: 30rpx;
-}
-.nav-left .nav-img {
-  height: 420rpx;
+.shopList .shop-img {
+  height: 250rpx;
   width: 300rpx;
-  border-radius: 30rpx;
+  background-color: chartreuse;
+  
 }
-.nav-right {
-
-}
-
-.nav-right .nav-img {
+.shopList .shop-img image{
   height: 200rpx;
-  padding-bottom: 8rpx;
   width: 300rpx;
-  border-radius: 30rpx;
 }

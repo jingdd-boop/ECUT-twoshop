@@ -1,2 +1,6 @@
-<!--miniprogram/pages/mine/mine.wxml-->
-<text>miniprogram/pages/mine/mine.wxml</text>
+<view wx:for="{{userList}}">
+  <image src="{{item.userUrl}}"></image>
+  <view>{{item.userName}}</view>
+</view>
+
+

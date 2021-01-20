@@ -1,0 +1,6 @@
+<!-- 搜索框 -->
+<view class="search">
+  <input placeholder="校园二手交易平台">
+</input>
+<image src="../../images/search.svg"></image> 
+</view>

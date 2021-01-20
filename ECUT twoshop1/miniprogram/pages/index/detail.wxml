@@ -1,0 +1,26 @@
+<view wx:for="{{shopList}}">
+
+<view>{{item.title}}</view>
+<!-- <view>{{item.type}}</view> -->
+<view>{{item.addr}}</view>
+<view>{{item.collection}}</view>
+<view>
+  <image src="{{item.pic[0]}}"></image>
+</view>
+<!-- <view>{{item.tell}}</view> -->
+<view> 
+  <text selectable='true'>{{item.tell}}</text>
+  <view>长按复制</view>
+</view>
+
+
+
+<view>{{item.date}}</view>
+<navigator url="/pages/index/detail?_id={{item._id}}">
+  <view>查看详情</view>
+</navigator>
+
+
+
+
+</view>

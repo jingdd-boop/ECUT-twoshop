@@ -1,2 +1,28 @@
-<!--miniprogram/pages/publish/publish.wxml-->
-<text>miniprogram/pages/publish/publish.wxml</text>
+<!-- 闲置类别 -->
+<view>闲置商品类别</view>
+<radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+<!-- 描述 -->
+<input placeholder="输入商品名称 8个字以内" bindinput="addTitle"></input>
+
+<input placeholder="输入商品描述" bindinput="addDes"></input>
+<input placeholder="输入地址" bindinput="addAddr"></input>
+<input placeholder="输入商品价格" bindinput="addPrice"></input>
+<input placeholder="输入联系方式" bindinput="addTell"></input>
+
+
+<!-- 联系方式 -->
+<!-- 发布图片 -->
+<view>
+    <button bindtap="chooseImg">选择图片</button>
+    <view wx:for-items="{{pic}}" wx:for-item="item" wx:key="*this">
+        <image mode="widthFix" src="{{item}}"></image>
+    </view>
+    <view>上传的图片</view>
+</view>
+
+<!-- 发布闲置 -->
+<van-button type="default" bindtap="addData">发布闲置</van-button>
