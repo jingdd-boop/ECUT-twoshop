@@ -5,19 +5,56 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList:[]
+    userList:[],
+    shopList:[]
+  },
+
+  onClick(event) {
+
+   
+    wx.showToast({
+      title: `点击标签 ${event.detail.name}`,
+      icon: 'none',
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name:"shopOpenId",
+      success(res){
+        console.log(res)
+        var openId = res.result.event.userInfo.openId
+      },
+      fail(res){
+        console.log(res)
+      }
+    })
     let that = this
-    wx.cloud.database().collection("shop-users").get({
+    wx.cloud.database().collection("shop-users").where({
+      openId:that.openId
+    }).get({
       success(res) {
         console.log("请求成功",res)
         that.setData({
-          userList:res.data
+          userList:res.data,
+          openId:res.data._openId
+        })
+      },
+      fail(res) {
+        console.log("请求失败",res)
+      }
+    })
+
+    wx.cloud.database().collection("shop-list").where({
+      openId:that.openId
+    }).get({
+      success(res) {
+        console.log("请求成功",res)
+        that.setData({
+          shopList:res.data
         })
       },
       fail(res) {

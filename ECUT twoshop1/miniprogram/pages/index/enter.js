@@ -14,11 +14,13 @@ Page({
   
   bindGetUserInfo: function (e) {
     wx.switchTab({
-      url: '../index/index',  //注意switchTab只能跳转到tab页面，不能跳转到不带tab的页面
+      url: '../index/index?_id={{item._id}}',  //注意switchTab只能跳转到tab页面，不能跳转到不带tab的页面
     })
     this.setData({
      users:e.detail.userInfo
     })
+
+    
     
       DB.add({
         data: {
@@ -30,6 +32,18 @@ Page({
         },
         fail(res){
           console.log("失败",res)
+        }
+      })
+
+      DB.get({
+        success(res) {
+          console.log("请求成功",res)
+          // that.setData({
+          //   openId:res.data
+          // })
+        },
+        fail(res) {
+          console.log("请求失败",res)
         }
       })
     },

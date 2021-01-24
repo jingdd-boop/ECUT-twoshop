@@ -25,22 +25,23 @@
       <view class="shop-img">
         <image src="{{item.pic[0]}}"></image>
       </view>
-      <view>
-        <view>{{item.title}}</view>
+      
+      <view class="shop-msg">
+        <view class="shop-msg__title">{{item.title}}</view>
       <!-- <view>{{item.type}}</view> -->
-      <view>{{item.addr}}</view>
+      <view class="userList" wx:for="{{userList}}">
+        <view class="user-img">
+          <image src="{{item.userUrl}}"></image>
+        </view>
+        <view class="user-name">{{item.userName}}</view>
+      </view>
+      <view class="shop-msg__addr">{{item.addr}}</view>
       <!-- <view>{{item.collection}}</view> -->
-        <view>{{item.date}}</view>
+        <!-- <view>{{item.date}}</view> -->
         <navigator url="/pages/index/detail?_id={{item._id}}">
-          <view>查看详情</view>
+          <view class="shop-msg__detail">查看详情</view>
         </navigator>
       </view>
-      
-     
       <!-- <view>{{item.tell}}</view> -->
      
-     
- 
-     
-
 </view>

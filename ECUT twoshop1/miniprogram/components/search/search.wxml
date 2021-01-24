@@ -1,6 +1,8 @@
 <!-- 搜索框 -->
-<view class="search">
-  <input placeholder="校园二手交易平台">
+<navigator url="/pages/index/search">
+  <view class="search">
+  <input bindtap="Input" placeholder="校园二手交易平台">
 </input>
-<image src="../../images/search.svg"></image> 
+  <image  src="../../images/search.svg"></image> 
 </view>
+</navigator>

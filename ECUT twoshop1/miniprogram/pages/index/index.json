@@ -1,5 +1,5 @@
 {
-  
+  "navigationBarTitleText": "ECUT-闲置shop",
   "usingComponents": {
     "index-swiper":"/components/swiper/swiper",
     "my-search":"/components/search/search",

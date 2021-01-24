@@ -2,10 +2,11 @@
 Page({
   data: {
     shopList:[],
+    userList:[],
     isShow:true,
     imgUrls:[
-      'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/152869/36/733/129848/5f6da644E8c640b50/35117f17f08456ad.jpg!q70.dpg.webp',
-      'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/149571/38/9289/117895/5f6da644E784f911b/21a284afecffdb4f.jpg!q70.dpg.webp'
+      'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3205342688,4225907114&fm=26&gp=0.jpg',
+      'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4048818314,2316053512&fm=26&gp=0.jpg'
     ],
     activeTypeId:'01',
     type: '',
@@ -58,13 +59,38 @@ Page({
     
   },
   onLoad() {
+    wx.cloud.callFunction({
+      name:"shopOpenId",
+      success(res){
+        console.log(res)
+        var openId = res.result.event.userInfo.openId
+      },
+      fail(res){
+        console.log(res)
+      }
+    })
 
     let that = this
-    wx.cloud.database().collection("shop-list").get({
+    wx.cloud.database().collection("shop-list").where({
+      openId:that.openId
+    }).get({
       success(res) {
         console.log("请求成功",res)
         that.setData({
           shopList:res.data
+        })
+      },
+      fail(res) {
+        console.log("请求失败",res)
+      }
+    })
+    wx.cloud.database().collection("shop-users").where({
+      openId:that.openId
+    }).get({
+      success(res) {
+        console.log("请求成功",res)
+        that.setData({
+          userList:res.data
         })
       },
       fail(res) {
